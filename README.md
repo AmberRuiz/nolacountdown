@@ -1,0 +1,226 @@
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700;900&amp;family=Cormorant+Garamond:wght@300;400;600&amp;display=swap" rel="stylesheet">
+  <style>
+    @keyframes fleurSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .fade-up { opacity: 1; }
+    .fade-up-d1 { }
+    .fade-up-d2 { }
+    .fade-up-d3 { }
+    .fade-up-d4 { }
+    .shimmer { opacity: 1; }
+    .fleur-glow { }
+
+    .digit-box {
+      position: relative;
+      overflow: hidden;
+    }
+    .digit-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 50%;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.06), transparent);
+      pointer-events: none;
+      border-radius: inherit;
+    }
+
+    .ornament-line {
+      background: linear-gradient(90deg, transparent, rgba(180,166,142,0.4), transparent);
+      height: 1px;
+    }
+
+    .nola-pattern {
+      background-image: 
+        radial-gradient(circle at 20% 50%, rgba(180,166,142,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(180,166,142,0.06) 0%, transparent 50%);
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app-wrapper" class="h-full w-full flex items-center justify-center nola-pattern" style="background-color: #8a9a7b; font-family: 'Playfair Display', serif;">
+   <div class="w-full max-w-md mx-auto px-4 py-6 flex flex-col items-center">
+    <!-- Fleur-de-lis top ornament -->
+    <div class="fleur-glow mb-3 fade-up">
+     <svg width="32" height="32" viewbox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50 5 C50 5 55 20 55 35 C60 25 75 15 75 15 C75 15 70 30 60 40 C70 38 85 35 85 35 C85 35 75 48 60 50 C75 52 85 65 85 65 C85 65 70 62 60 60 C70 70 75 85 75 85 C75 85 60 75 55 65 C55 80 50 95 50 95 C50 95 45 80 45 65 C40 75 25 85 25 85 C25 85 30 70 40 60 C30 62 15 65 15 65 C15 65 25 52 40 50 C25 48 15 35 15 35 C15 35 30 38 40 40 C30 30 25 15 25 15 C25 15 40 25 45 35 C45 20 50 5 50 5Z" fill="rgba(180,166,142,0.7)" stroke="rgba(180,166,142,0.9)" stroke-width="1" />
+     </svg>
+    </div><!-- Event Title -->
+    <h1 id="event-title" class="text-center font-bold tracking-wider uppercase fade-up fade-up-d1" style="color: #ffffff; font-size: 28px; letter-spacing: 0.2em; text-shadow: 0 1px 3px rgba(0,0,0,0.15); font-family: 'Bodoni Moda', serif;">New Orleans Awaits</h1><!-- Ornamental divider -->
+    <div class="w-48 my-3 flex items-center gap-2 fade-up fade-up-d1">
+     <div class="ornament-line flex-1"></div>
+     <svg width="10" height="10" viewbox="0 0 10 10"><path d="M5 0 L10 5 L5 10 L0 5Z" fill="rgba(180,166,142,0.5)" />
+     </svg>
+     <div class="ornament-line flex-1"></div>
+    </div><!-- Tagline -->
+    <p id="event-tagline" class="text-center fade-up fade-up-d2" style="color: #ffffff; font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 300; letter-spacing: 0.15em; margin-bottom: 20px;">Laissez les bons temps rouler</p><!-- Countdown digits -->
+    <div id="countdown-container" class="flex items-center gap-2 fade-up fade-up-d3">
+     <!-- Days -->
+     <div class="flex flex-col items-center">
+      <div class="digit-box rounded-lg px-3 py-2 text-center" style="background: rgba(0,0,0,0.15); border: 1px solid rgba(180,166,142,0.25); min-width: 60px;">
+       <span id="days" class="block font-black tabular-nums" style="color: #ffffff; font-size: 32px; line-height: 1.1; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">--</span>
+      </div><span class="mt-1.5 uppercase tracking-widest" style="color: #d4c5b0; font-family: 'Cormorant Garamond', serif; font-size: 9px; letter-spacing: 0.2em;">Days</span>
+     </div><span class="shimmer self-start mt-2" style="color: rgba(180,166,142,0.6); font-size: 24px;">⁚</span> <!-- Hours -->
+     <div class="flex flex-col items-center">
+      <div class="digit-box rounded-lg px-3 py-2 text-center" style="background: rgba(0,0,0,0.15); border: 1px solid rgba(180,166,142,0.25); min-width: 60px;">
+       <span id="hours" class="block font-black tabular-nums" style="color: #ffffff; font-size: 32px; line-height: 1.1; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">--</span>
+      </div><span class="mt-1.5 uppercase tracking-widest" style="color: #d4c5b0; font-family: 'Cormorant Garamond', serif; font-size: 9px; letter-spacing: 0.2em;">Hours</span>
+     </div><span class="shimmer self-start mt-2" style="color: rgba(180,166,142,0.6); font-size: 24px;">⁚</span> <!-- Minutes -->
+     <div class="flex flex-col items-center">
+      <div class="digit-box rounded-lg px-3 py-2 text-center" style="background: rgba(0,0,0,0.15); border: 1px solid rgba(180,166,142,0.25); min-width: 60px;">
+       <span id="minutes" class="block font-black tabular-nums" style="color: #ffffff; font-size: 32px; line-height: 1.1; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">--</span>
+      </div><span class="mt-1.5 uppercase tracking-widest" style="color: #d4c5b0; font-family: 'Cormorant Garamond', serif; font-size: 9px; letter-spacing: 0.2em;">Mins</span>
+     </div><span class="shimmer self-start mt-2" style="color: rgba(180,166,142,0.6); font-size: 24px;">⁚</span> <!-- Seconds -->
+     <div class="flex flex-col items-center">
+      <div class="digit-box rounded-lg px-3 py-2 text-center" style="background: rgba(0,0,0,0.15); border: 1px solid rgba(180,166,142,0.25); min-width: 60px;">
+       <span id="seconds" class="block font-black tabular-nums" style="color: #ffffff; font-size: 32px; line-height: 1.1; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">--</span>
+      </div><span class="mt-1.5 uppercase tracking-widest" style="color: #d4c5b0; font-family: 'Cormorant Garamond', serif; font-size: 9px; letter-spacing: 0.2em;">Secs</span>
+     </div>
+    </div><!-- Bottom ornament -->
+    <div class="w-32 mt-5 flex items-center gap-2 fade-up fade-up-d4">
+     <div class="ornament-line flex-1"></div>
+     <svg width="8" height="8" viewbox="0 0 100 100" fill="rgba(180,166,142,0.4)">
+      <path d="M50 5 C50 5 55 20 55 35 C60 25 75 15 75 15 C75 15 70 30 60 40 C70 38 85 35 85 35 C85 35 75 48 60 50 C75 52 85 65 85 65 C85 65 70 62 60 60 C70 70 75 85 75 85 C75 85 60 75 55 65 C55 80 50 95 50 95 C50 95 45 80 45 65 C40 75 25 85 25 85 C25 85 30 70 40 60 C30 62 15 65 15 65 C15 65 25 52 40 50 C25 48 15 35 15 35 C15 35 30 38 40 40 C30 30 25 15 25 15 C25 15 40 25 45 35 C45 20 50 5 50 5Z" />
+     </svg>
+     <div class="ornament-line flex-1"></div>
+    </div><!-- Date -->
+    <p class="mt-2 fade-up fade-up-d4" style="color: #ffffff; font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 0.15em;">June 12, 2026</p>
+   </div>
+  </div>
+  <script>
+    // Target date: June 12, 2026
+    const TARGET_DATE = new Date('2026-06-12T00:00:00').getTime();
+
+    const defaultConfig = {
+      event_title: 'New Orleans Awaits',
+      event_tagline: 'Laissez les bons temps rouler',
+      background_color: '#8a9a7b',
+      surface_color: 'rgba(0,0,0,0.15)',
+      text_color: '#ffffff',
+      accent_color: '#d4c5b0',
+      secondary_action_color: 'rgba(212,197,176,0.7)',
+      font_family: 'Bodoni Moda',
+      font_size: 16
+    };
+
+    function applyConfig(config) {
+      const c = { ...defaultConfig, ...config };
+
+      // Text content
+      document.getElementById('event-title').textContent = c.event_title;
+      document.getElementById('event-tagline').textContent = c.event_tagline;
+
+      // Background
+      document.getElementById('app-wrapper').style.backgroundColor = c.background_color;
+
+      // Text colors
+      document.getElementById('event-title').style.color = c.text_color;
+      document.getElementById('event-tagline').style.color = c.text_color;
+
+      // Digit colors
+      ['days','hours','minutes','seconds'].forEach(id => {
+        document.getElementById(id).style.color = c.text_color;
+      });
+
+      // Digit boxes - surface color
+      document.querySelectorAll('.digit-box').forEach(box => {
+        box.style.background = c.surface_color;
+        box.style.borderColor = c.accent_color + '40';
+      });
+
+      // Font
+      const fontStack = `${c.font_family}, Bodoni Moda, serif`;
+      document.getElementById('event-title').style.fontFamily = fontStack;
+      ['days','hours','minutes','seconds'].forEach(id => {
+        document.getElementById(id).style.fontFamily = fontStack;
+      });
+
+      // Font size scaling
+      const scale = c.font_size / 16;
+      document.getElementById('event-title').style.fontSize = `${18 * scale}px`;
+      document.getElementById('event-tagline').style.fontSize = `${13 * scale}px`;
+      ['days','hours','minutes','seconds'].forEach(id => {
+        document.getElementById(id).style.fontSize = `${32 * scale}px`;
+      });
+    }
+
+    // Countdown logic
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = TARGET_DATE - now;
+
+      if (diff <= 0) {
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = String(days).padStart(2, '0');
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(mins).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(secs).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Element SDK init
+    window.elementSdk.init({
+      defaultConfig,
+      onConfigChange: async (config) => { applyConfig(config); },
+      mapToCapabilities: (config) => ({
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); }
+          },
+          {
+            get: () => config.surface_color || defaultConfig.surface_color,
+            set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (v) => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); }
+          },
+          {
+            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+            set: (v) => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+        }
+      }),
+      mapToEditPanelValues: (config) => new Map([
+        ['event_title', config.event_title || defaultConfig.event_title],
+        ['event_tagline', config.event_tagline || defaultConfig.event_tagline]
+      ])
+    });
+
+    lucide.createIcons();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9dd628c3347fb28c',t:'MTc3MzY4OTI4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
